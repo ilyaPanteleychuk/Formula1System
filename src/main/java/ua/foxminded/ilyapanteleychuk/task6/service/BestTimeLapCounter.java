@@ -13,6 +13,16 @@ import java.util.stream.Collectors;
 public class BestTimeLapCounter {
 
     public List<BestRacer> countBestLap(List<Model> racersInfo){
+        return sortByTime(countBestLapRealization(racersInfo));
+    }
+
+    private List<BestRacer> sortByTime(List<BestRacer> bestRacers){
+        return bestRacers.stream()
+                .sorted(Comparator.comparing(BestRacer :: getBestLapTime))
+                .collect(Collectors.toList());
+    }
+
+    private List<BestRacer> countBestLapRealization(List<Model> racersInfo){
         List<BestRacer> bestRacers = new ArrayList<>();
         for(int i = 0; i < racersInfo.size(); i++){
             Model racer = racersInfo.get(i);
@@ -22,7 +32,6 @@ public class BestTimeLapCounter {
             Duration bestLap = Duration.between(startOfRace, endOfRace);
             bestRacers.add(new BestRacer(abbreviation, bestLap));
         }
-        return bestRacers.stream().sorted(Comparator.comparing(BestRacer :: getBestLapTime))
-                .collect(Collectors.toList());
+        return bestRacers;
     }
 }

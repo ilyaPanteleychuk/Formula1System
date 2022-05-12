@@ -2,6 +2,7 @@ package ua.foxminded.ilyapanteleychuk.task6.models;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class Model {
 
@@ -36,5 +37,20 @@ public class Model {
                 ", startOfRace=" + startOfRace +
                 ", endOfRace=" + endOfRace +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
+        Model model = (Model) o;
+        return Objects.equals(abbreviation, model.abbreviation)
+                && Objects.equals(startOfRace, model.startOfRace)
+                 && Objects.equals(endOfRace, model.endOfRace);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(abbreviation, startOfRace, endOfRace);
     }
 }

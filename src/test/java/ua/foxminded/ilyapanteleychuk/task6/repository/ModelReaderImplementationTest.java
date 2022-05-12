@@ -1,10 +1,7 @@
 package ua.foxminded.ilyapanteleychuk.task6.repository;
 
-import com.google.common.base.Utf8;
-import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,26 +10,23 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 
-class StartReaderImplementationTest {
+
+class ModelReaderImplementationTest {
 
     private static final String START_LOG_FILE = "start.log";
     private static final String END_LOG_FILE = "end.log";
     private static final String ABBREVIATION_FILE = "abbreviations.txt";
-    private StartReaderImplementation reader;
+    private ModelReaderImplementation reader;
     private List<String> content;
     private ClassLoader classLoader;
+
     @BeforeEach
     void init(){
         content = new ArrayList<>();
-        reader = new StartReaderImplementation();
+        reader = new ModelReaderImplementation();
         classLoader = getClass().getClassLoader();
     }
 

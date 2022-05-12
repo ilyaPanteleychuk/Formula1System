@@ -1,6 +1,8 @@
 package ua.foxminded.ilyapanteleychuk.task6.models;
 
 
+import java.util.Objects;
+
 public class Abbreviation {
 
     private final String abbreviation;
@@ -32,5 +34,20 @@ public class Abbreviation {
                 ", racerName='" + racerName + '\'' +
                 ", racerCar='" + racerCar + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
+        Abbreviation that = (Abbreviation) o;
+        return Objects.equals(abbreviation, that.abbreviation)
+                && Objects.equals(racerName, that.racerName)
+                    && Objects.equals(racerCar, that.racerCar);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(abbreviation, racerName, racerCar);
     }
 }

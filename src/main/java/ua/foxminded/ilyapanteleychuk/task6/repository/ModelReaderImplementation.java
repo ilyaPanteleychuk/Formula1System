@@ -9,12 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class StartReaderImplementation implements StartReader {
+public class ModelReaderImplementation implements ModelReader {
 
     @Override
     public List<String> readFile(String fileName) {
-        InputStream stream = getFileFromResourceAsStream(fileName);
-        return readInputStream(stream);
+        return readInputStream(getFileFromResourceAsStream(fileName));
     }
 
     private static List<String> readInputStream(InputStream inputStream){

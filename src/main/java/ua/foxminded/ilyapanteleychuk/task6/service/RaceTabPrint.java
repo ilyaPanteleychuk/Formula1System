@@ -63,7 +63,7 @@ public class RaceTabPrint {
     private String timeFormatter(Duration duration){
         String differenceAsString = String.valueOf(duration);
         differenceAsString = differenceAsString.replaceAll("[^\\d.]", "");
-        StringBuffer buffer = new StringBuffer(differenceAsString);
+        StringBuilder buffer = new StringBuilder(differenceAsString);
         buffer.insert(1, ':');
         return buffer.toString();
     }
