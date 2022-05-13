@@ -1,13 +1,11 @@
-package ua.foxminded.ilyapanteleychuk.task6.service;
+package ua.foxminded.ilyapanteleychuk.task6.service.formatter;
 
 import org.junit.jupiter.api.Test;
 import ua.foxminded.ilyapanteleychuk.task6.models.Abbreviation;
-import ua.foxminded.ilyapanteleychuk.task6.repository.ModelReaderImplementation;
-
 import java.util.ArrayList;
 import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class AbbreviationFormatterTest {
 

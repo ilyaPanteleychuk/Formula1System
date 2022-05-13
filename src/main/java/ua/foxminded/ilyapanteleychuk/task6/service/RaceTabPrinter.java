@@ -3,10 +3,10 @@ package ua.foxminded.ilyapanteleychuk.task6.service;
 import ua.foxminded.ilyapanteleychuk.task6.models.Abbreviation;
 import ua.foxminded.ilyapanteleychuk.task6.models.BestRacer;
 import java.time.Duration;
-import java.util.*;
+import java.util.List;
 
 
-public class RaceTabPrint {
+public class RaceTabPrinter {
 
     private static final String WHITE_SPACE = " ";
     private static final int LIMIT_OF_NAME = 25;
@@ -33,7 +33,7 @@ public class RaceTabPrint {
                                        .append(drawNameIntend(lengthOfName, i))
                                        .append('|')
                                        .append(car)
-                                       .append(drawCarIntend(lengthOfCar, i))
+                                       .append(drawCarIntend(lengthOfCar))
                                        .append('|')
                                        .append(timeOfLap)
                                        .append(System.lineSeparator());
@@ -42,7 +42,6 @@ public class RaceTabPrint {
     }
 
     private String drawNameIntend(int length, int index){
-
         String lengthOfPlace = String.valueOf(index + 1);
         if(lengthOfPlace.length() != 1){
             return WHITE_SPACE.repeat((LIMIT_OF_NAME - length) - 1);
@@ -51,13 +50,8 @@ public class RaceTabPrint {
         }
     }
 
-    private String drawCarIntend(int length, int index){
-        String lengthOfPlace = String.valueOf(index + 1);
-        if(lengthOfPlace.length() != 1){
-            return WHITE_SPACE.repeat((LIMIT_OF_CAR - length));
-        }else {
-            return WHITE_SPACE.repeat((LIMIT_OF_CAR - length));
-        }
+    private String drawCarIntend(int length){
+        return WHITE_SPACE.repeat((LIMIT_OF_CAR - length));
     }
 
     private String timeFormatter(Duration duration){

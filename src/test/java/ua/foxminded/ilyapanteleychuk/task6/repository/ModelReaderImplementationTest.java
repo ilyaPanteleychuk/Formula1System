@@ -2,67 +2,49 @@ package ua.foxminded.ilyapanteleychuk.task6.repository;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+import ua.foxminded.ilyapanteleychuk.task6.exception.EmptyFileException;
 import java.util.ArrayList;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 class ModelReaderImplementationTest {
 
-    private static final String START_LOG_FILE = "start.log";
-    private static final String END_LOG_FILE = "end.log";
-    private static final String ABBREVIATION_FILE = "abbreviations.txt";
     private ModelReaderImplementation reader;
     private List<String> content;
-    private ClassLoader classLoader;
 
     @BeforeEach
     void init(){
         content = new ArrayList<>();
         reader = new ModelReaderImplementation();
-        classLoader = getClass().getClassLoader();
     }
 
     @Test
-    void readFile_shouldReturnRightArrayList_whenInputIsStartLogFile() throws IOException {
-        InputStream inputStream = classLoader.getResourceAsStream(START_LOG_FILE);
-        InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-        BufferedReader buffer = new BufferedReader(streamReader);
-        String line;
-        while((line = buffer.readLine()) != null){
-            content.add(line);
-        }
-        assertEquals(reader.readFile("start.log"), content);
+    void readFile_shouldReadFileCorrectly_whenFileHasContentButNotSingleLine() throws EmptyFileException {
+        String firstLine = "SVF2018-05-24_12:02:58.917";
+        String secondLine = "NHR2018-05-24_12:02:49.914";
+        String thirdLine = "FAM2018-05-24_12:13:04.512";
+        content.add(firstLine);
+        content.add(secondLine);
+        content.add(thirdLine);
+        assertEquals(content, reader.readFile("severalLineFileTest.log"));
     }
 
     @Test
-    void readFile_shouldReturnRightArrayList_whenInputIsEndLogFile() throws IOException{
-        InputStream inputStream = classLoader.getResourceAsStream(END_LOG_FILE);
-        InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-        BufferedReader buffer = new BufferedReader(streamReader);
-        String line;
-        while((line = buffer.readLine()) != null){
-            content.add(line);
-        }
-        assertEquals(reader.readFile("end.log"), content);
+    void readFile_shouldReadFileCorrectly_whenInputIsEndLogFile() throws EmptyFileException {
+        String singleLine = "MES2018-05-24_12:05:58.778";
+        content.add(singleLine);
+        assertEquals(content, reader.readFile("singleLineTestFile.log"));
     }
 
     @Test
-    void readFile_shouldReturnRightArrayList_whenInputIsAbbreviationTxtFile() throws IOException{
-        InputStream inputStream = classLoader.getResourceAsStream(ABBREVIATION_FILE);
-        InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-        BufferedReader buffer = new BufferedReader(streamReader);
-        String line;
-        while((line = buffer.readLine()) != null){
-            content.add(line);
-        }
-        assertEquals(reader.readFile("abbreviations.txt"), content);
+    void read(){
+        assertThrows(IllegalArgumentException.class, () -> reader.readFile("non-existing file"));
+    }
+
+    @Test
+    void readFile_shouldThrowIllegalArgumentException_whenFileIsEmpty(){
+        assertThrows(EmptyFileException.class, () -> reader.readFile("emptyFile.txt"));
     }
 }

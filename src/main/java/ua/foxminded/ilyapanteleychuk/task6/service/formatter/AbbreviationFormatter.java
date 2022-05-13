@@ -1,7 +1,6 @@
-package ua.foxminded.ilyapanteleychuk.task6.service;
+package ua.foxminded.ilyapanteleychuk.task6.service.formatter;
 
 import ua.foxminded.ilyapanteleychuk.task6.models.Abbreviation;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +13,7 @@ public class AbbreviationFormatter {
 
     private List<Abbreviation> formatRealization(List<String> abbreviationInfo){
         List<Abbreviation> racersAbbreviations = new ArrayList<>();
-        for(int i = 0; i < abbreviationInfo.size(); i++){
-            String line = abbreviationInfo.get(i);
+        for(String line : abbreviationInfo) {
             String abbreviation = line.substring(0, 3);
             String nameOfRacer = line.substring(4, line.lastIndexOf("_"));
             String carOfRacer = line.substring(line.lastIndexOf("_") + 1);

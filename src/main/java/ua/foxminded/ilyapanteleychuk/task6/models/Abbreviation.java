@@ -1,7 +1,7 @@
 package ua.foxminded.ilyapanteleychuk.task6.models;
 
-
 import java.util.Objects;
+
 
 public class Abbreviation {
 

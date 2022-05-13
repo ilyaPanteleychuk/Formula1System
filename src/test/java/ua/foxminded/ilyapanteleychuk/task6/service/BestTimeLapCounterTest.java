@@ -3,13 +3,11 @@ package ua.foxminded.ilyapanteleychuk.task6.service;
 import org.junit.jupiter.api.Test;
 import ua.foxminded.ilyapanteleychuk.task6.models.BestRacer;
 import ua.foxminded.ilyapanteleychuk.task6.models.Model;
-
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BestTimeLapCounterTest {
 

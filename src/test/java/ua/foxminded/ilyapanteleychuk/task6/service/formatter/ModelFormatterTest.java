@@ -1,8 +1,8 @@
-package ua.foxminded.ilyapanteleychuk.task6.service;
+package ua.foxminded.ilyapanteleychuk.task6.service.formatter;
 
 import org.junit.jupiter.api.Test;
 import ua.foxminded.ilyapanteleychuk.task6.models.Model;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 

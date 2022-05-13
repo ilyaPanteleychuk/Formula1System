@@ -2,6 +2,7 @@ package ua.foxminded.ilyapanteleychuk.task6.models;
 
 import java.time.Duration;
 
+
 public class BestRacer {
 
     private final String abbreviation;
