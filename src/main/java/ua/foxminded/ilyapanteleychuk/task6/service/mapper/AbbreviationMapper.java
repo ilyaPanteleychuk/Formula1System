@@ -1,13 +1,13 @@
-package ua.foxminded.ilyapanteleychuk.task6.service.formatter;
+package ua.foxminded.ilyapanteleychuk.task6.service.mapper;
 
 import ua.foxminded.ilyapanteleychuk.task6.models.Abbreviation;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class AbbreviationFormatter {
+public class AbbreviationMapper {
 
-    public List<Abbreviation> format(List<String> abbreviationInfo){
+    public List<Abbreviation> mapFromString(List<String> abbreviationInfo){
         return formatRealization(abbreviationInfo);
     }
 

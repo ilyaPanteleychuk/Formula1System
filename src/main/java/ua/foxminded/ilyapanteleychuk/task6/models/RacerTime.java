@@ -1,23 +1,21 @@
 package ua.foxminded.ilyapanteleychuk.task6.models;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 
-public class Model {
+public class RacerTime {
 
     private final String abbreviation;
     private final LocalDateTime startOfRace;
     private final LocalDateTime endOfRace;
-    private static final DateTimeFormatter FORMATTER =
-            DateTimeFormatter.ofPattern("yyyy-MM-dd_HH:mm:ss.SSS");
 
-    public Model(String abbreviation, String startOfRace, String endOfRace) {
+    public RacerTime(String abbreviation, LocalDateTime startOfRace, LocalDateTime endOfRace) {
         this.abbreviation = abbreviation;
-        this.startOfRace = LocalDateTime.parse(startOfRace, FORMATTER) ;
-        this.endOfRace = LocalDateTime.parse(endOfRace, FORMATTER);
+        this.startOfRace = startOfRace;
+        this.endOfRace = endOfRace;
     }
+
 
     public String getAbbreviation() {
         return abbreviation;
@@ -44,10 +42,10 @@ public class Model {
     public boolean equals(Object o) {
         if(this == o) return true;
         if(o == null || getClass() != o.getClass()) return false;
-        Model model = (Model) o;
-        return Objects.equals(abbreviation, model.abbreviation)
-                && Objects.equals(startOfRace, model.startOfRace)
-                 && Objects.equals(endOfRace, model.endOfRace);
+        RacerTime racerTime = (RacerTime) o;
+        return Objects.equals(abbreviation, racerTime.abbreviation)
+                && Objects.equals(startOfRace, racerTime.startOfRace)
+                 && Objects.equals(endOfRace, racerTime.endOfRace);
     }
 
     @Override

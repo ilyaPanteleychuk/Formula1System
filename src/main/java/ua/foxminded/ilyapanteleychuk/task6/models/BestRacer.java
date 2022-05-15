@@ -1,6 +1,7 @@
 package ua.foxminded.ilyapanteleychuk.task6.models;
 
 import java.time.Duration;
+import java.util.Objects;
 
 
 public class BestRacer {
@@ -27,5 +28,19 @@ public class BestRacer {
                 "abbreviation='" + abbreviation + '\'' +
                 ", bestLapTime=" + bestLapTime +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
+        BestRacer bestRacer = (BestRacer) o;
+        return Objects.equals(abbreviation, bestRacer.abbreviation)
+                && Objects.equals(bestLapTime, bestRacer.bestLapTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(abbreviation, bestLapTime);
     }
 }

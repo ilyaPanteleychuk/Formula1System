@@ -1,4 +1,4 @@
-package ua.foxminded.ilyapanteleychuk.task6.service.formatter;
+package ua.foxminded.ilyapanteleychuk.task6.service.mapper;
 
 import org.junit.jupiter.api.Test;
 import ua.foxminded.ilyapanteleychuk.task6.models.Abbreviation;
@@ -7,7 +7,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-class AbbreviationFormatterTest {
+class AbbreviationMapperTest {
 
     @Test
     void format_shouldReturnRightAbbreviationListWithRightObjects_whenInputIsListOfString() {
@@ -17,8 +17,8 @@ class AbbreviationFormatterTest {
         String nameOfRacer = "Daniel Ricciardo";
         String nameOfCar = "RED BULL RACING TAG HEUER";
         Abbreviation expected = new Abbreviation(abbreviation, nameOfRacer, nameOfCar);
-        AbbreviationFormatter formatter = new AbbreviationFormatter();
-        List<Abbreviation> abbreviationList = formatter.format(abbreviationInfo);
+        AbbreviationMapper formatter = new AbbreviationMapper();
+        List<Abbreviation> abbreviationList = formatter.mapFromString(abbreviationInfo);
         Abbreviation actual = abbreviationList.get(0);
         boolean isEquals = expected.equals(actual);
         assertTrue(isEquals);

@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
-class ModelReaderImplementationTest {
+class RacerTimeReaderImplementationTest {
 
     private ModelReaderImplementation reader;
     private List<String> content;
@@ -39,7 +39,7 @@ class ModelReaderImplementationTest {
     }
 
     @Test
-    void read(){
+    void readFile_sholdTrowsIllegalArgumentException_whenFileDoesNotExist(){
         assertThrows(IllegalArgumentException.class, () -> reader.readFile("non-existing file"));
     }
 
