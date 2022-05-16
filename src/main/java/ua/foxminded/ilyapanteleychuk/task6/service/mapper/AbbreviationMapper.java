@@ -8,10 +8,6 @@ import java.util.List;
 public class AbbreviationMapper {
 
     public List<Abbreviation> mapFromString(List<String> abbreviationInfo){
-        return formatRealization(abbreviationInfo);
-    }
-
-    private List<Abbreviation> formatRealization(List<String> abbreviationInfo){
         List<Abbreviation> racersAbbreviations = new ArrayList<>();
         for(String line : abbreviationInfo) {
             String abbreviation = line.substring(0, 3);

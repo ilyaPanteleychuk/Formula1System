@@ -4,12 +4,12 @@ import org.junit.jupiter.api.Test;
 import ua.foxminded.ilyapanteleychuk.task6.models.BestRacer;
 import ua.foxminded.ilyapanteleychuk.task6.models.RacerTime;
 import ua.foxminded.ilyapanteleychuk.task6.util.DateUtil;
-
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 class BestTimeLapCounterTest {
 

@@ -11,6 +11,7 @@ import java.util.List;
 import static java.lang.System.lineSeparator;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 class RaceTabPrinterTest {
 
     private List<RacerTime> racerTimes;
