@@ -1,20 +1,17 @@
 package ua.foxminded.ilyapanteleychuk.task6.service.mapper;
 
 import ua.foxminded.ilyapanteleychuk.task6.models.Abbreviation;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 public class AbbreviationMapper {
 
-    public List<Abbreviation> mapFromString(List<String> abbreviationInfo){
-        List<Abbreviation> racersAbbreviations = new ArrayList<>();
-        for(String line : abbreviationInfo) {
-            String abbreviation = line.substring(0, 3);
-            String nameOfRacer = line.substring(4, line.lastIndexOf("_"));
-            String carOfRacer = line.substring(line.lastIndexOf("_") + 1);
-            racersAbbreviations.add(new Abbreviation(abbreviation, nameOfRacer, carOfRacer));
-        }
-        return racersAbbreviations;
+    public Map<String, Abbreviation> mapFromString(List<String> abbreviationInfo) {
+        return abbreviationInfo.stream()
+            .collect(Collectors.toMap(el -> el.substring(0, 3),
+                el -> new Abbreviation(el.substring(4, el.lastIndexOf("_")),
+                    el.substring(el.lastIndexOf("_") + 1))));
     }
 }
