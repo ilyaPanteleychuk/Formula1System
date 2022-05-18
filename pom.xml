@@ -17,6 +17,7 @@
         <editorConfigVersion>0.1.1</editorConfigVersion>
         <mavenShadePluginVersion>3.2.4</mavenShadePluginVersion>
         <mavenShadePlugin>3.2.4</mavenShadePlugin>
+        <mockitoCorePlugin>4.5.1</mockitoCorePlugin>
     </properties>
 
     <dependencies>
@@ -24,6 +25,12 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junitJupiterVersion}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockitoCorePlugin}</version>
             <scope>test</scope>
         </dependency>
         <dependency>

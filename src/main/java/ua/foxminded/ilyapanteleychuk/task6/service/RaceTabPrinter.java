@@ -2,7 +2,6 @@ package ua.foxminded.ilyapanteleychuk.task6.service;
 
 import ua.foxminded.ilyapanteleychuk.task6.models.Abbreviation;
 import ua.foxminded.ilyapanteleychuk.task6.models.BestLapTime;
-
 import java.time.Duration;
 import java.util.Map;
 import java.util.Set;
@@ -15,7 +14,8 @@ public class RaceTabPrinter {
     private static final int LIMIT_OF_CAR = 35;
 
 
-    public String printTab(Map<String, Abbreviation> racerInfo, Map<String, BestLapTime> timeOfLap) {
+    public String printTab(Map<String, Abbreviation> racerInfo,
+                           Map<String, BestLapTime> timeOfLap) {
         StringBuilder output = new StringBuilder();
         Set<String> keySet = timeOfLap.keySet();
         int counter = 0;

@@ -14,27 +14,32 @@ import java.util.Map;
 
 public class RacerService {
 
-    public String printTab(String startFile, String endFile, String abbreviationsFile) {
-        String output = null;
-        try {
-            ModelReaderImplementation reader = new ModelReaderImplementation();
-            List<String> startInfo = reader.readFile(startFile);
-            List<String> endInfo = reader.readFile(endFile);
-            List<String> abbreviationInfo = reader.readFile(abbreviationsFile);
-            AbbreviationMapper abbreviationMapper = new AbbreviationMapper();
-            Map<String, Abbreviation> abbreviations =
+    private final ModelReaderImplementation reader;
+    private final AbbreviationMapper abbreviationMapper;
+    private final TimeMapperImplementation timeMapper;
+    private final BestTimeLapCounter lapCounter;
+    private final RaceTabPrinter tabPrinter;
+
+    public RacerService(ModelReaderImplementation reader, AbbreviationMapper abbreviationMapper,
+                        TimeMapperImplementation timeMapper, BestTimeLapCounter lapCounter,
+                        RaceTabPrinter tabPrinter) {
+        this.reader = reader;
+        this.abbreviationMapper = abbreviationMapper;
+        this.timeMapper = timeMapper;
+        this.lapCounter = lapCounter;
+        this.tabPrinter = tabPrinter;
+    }
+
+    public String printTab(String startFile, String endFile, String abbreviationsFile) throws EmptyFileException {
+        List<String> startInfo = reader.readFile(startFile);
+        List<String> endInfo = reader.readFile(endFile);
+        List<String> abbreviationInfo = reader.readFile(abbreviationsFile);
+        Map<String, Abbreviation> abbreviations =
                 abbreviationMapper.mapFromString(abbreviationInfo);
-            TimeMapperImplementation timeMapper = new TimeMapperImplementation();
-            Map<String, StartLapTime> startOfRace = timeMapper.startMapFromString(startInfo);
-            Map<String, EndLapTime> endOfRace = timeMapper.endMapFromString(endInfo);
-            BestTimeLapCounter lapCounter = new BestTimeLapCounter();
-            Map<String, BestLapTime> bestLapTimes =
+        Map<String, StartLapTime> startOfRace = timeMapper.startMapFromString(startInfo);
+        Map<String, EndLapTime> endOfRace = timeMapper.endMapFromString(endInfo);
+        Map<String, BestLapTime> bestLapTimes =
                 lapCounter.countBestLap(startOfRace, endOfRace);
-            RaceTabPrinter tabPrinter = new RaceTabPrinter();
-            output = tabPrinter.printTab(abbreviations, bestLapTimes);
-        }catch (EmptyFileException e) {
-            e.printStackTrace();
-        }
-        return output;
+        return tabPrinter.printTab(abbreviations, bestLapTimes);
     }
 }
